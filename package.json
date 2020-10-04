@@ -1,0 +1,75 @@
+{
+  "name": "@stefanprobst/remark-extract-yaml-frontmatter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": "git@github.com:stefanprobst/remark-extract-yaml-frontmatter",
+  "author": "Stefan Probst <stefanprobst@kolabnow.com>",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "format": "prettier . -l --ignore-path .gitignore",
+    "format:fix": "yarn format --write",
+    "lint": "eslint . --ignore-path .gitignore",
+    "lint:fix": "yarn lint --fix",
+    "test": "jest"
+  },
+  "dependencies": {
+    "unist-util-visit": "^2.0.3",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@stefanprobst/eslint-config-node": "^1.0.5",
+    "@stefanprobst/prettier-config": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "remark-frontmatter": "^2.0.0",
+    "remark-parse": "^8.0.0",
+    "typescript": "^4.0.3",
+    "unified": "^9.2.0"
+  },
+  "peerDependencies": {
+    "remark-frontmatter": "^2.0.0",
+    "unified": "^9.2.0"
+  },
+  "engines": {
+    "node": ">=12.9",
+    "yarn": "^1"
+  },
+  "commitlint": {
+    "extends": [
+      "@stefanprobst/commitlint-config"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@stefanprobst/eslint-config-node"
+    ]
+  },
+  "husky": {
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+    "pre-commit": "lint-staged"
+  },
+  "jest": {},
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.(json|md)": "prettier --write"
+  },
+  "prettier": "@stefanprobst/prettier-config"
+}
