@@ -12,5 +12,6 @@ function transformer(tree, vfile) {
 
   function visitor(node) {
     vfile.data.frontmatter = YAML.parse(node.value)
+    return visit.EXIT
   }
 }
