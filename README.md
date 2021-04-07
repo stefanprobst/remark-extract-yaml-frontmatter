@@ -30,3 +30,8 @@ console.log(data.frontmatter)
 
 // { title: 'Test' }
 ```
+
+## When not to use
+
+If you just want to extract frontmatter (without a full unified processor
+pipeline), you can use [`vfile-matter`](https://github.com/vfile/vfile-matter).
