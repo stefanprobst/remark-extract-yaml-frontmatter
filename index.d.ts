@@ -1,5 +1,5 @@
-import { Plugin } from 'unified'
+import type { Plugin } from 'unified'
 
 declare const extractFrontmatter: Plugin
 
-export = extractFrontmatter
+export default extractFrontmatter

@@ -1,9 +1,7 @@
-const visit = require('unist-util-visit')
-const YAML = require('yaml')
+import { visit } from 'unist-util-visit'
+import * as YAML from 'yaml'
 
-module.exports = attacher
-
-function attacher() {
+export default function attacher() {
   return transformer
 }
 

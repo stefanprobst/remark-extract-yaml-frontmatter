@@ -14,9 +14,9 @@ yarn add remark-frontmatter @stefanprobst/remark-extract-yaml-frontmatter
 ## How to use
 
 ```js
-const remark = require('remark')
-const frontmatter = require('remark-frontmatter')
-const yaml = require('@stefanprobst/remark-extract-yaml-frontmatter')
+import { remark } from 'remark'
+import frontmatter from 'remark-frontmatter'
+import yaml from '@stefanprobst/remark-extract-yaml-frontmatter'
 
 const md = `---
 title: Test

@@ -1,7 +1,8 @@
-const frontmatter = require('remark-frontmatter')
-const markdown = require('remark-parse')
-const unified = require('unified')
-const extract = require('.')
+import frontmatter from 'remark-frontmatter'
+import markdown from 'remark-parse'
+import { unified } from 'unified'
+
+import extract from '.'
 
 function noop() {
   this.Compiler = function (tree) {
