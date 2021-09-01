@@ -2,7 +2,7 @@ import frontmatter from 'remark-frontmatter'
 import markdown from 'remark-parse'
 import { unified } from 'unified'
 
-import extract from '.'
+import extract from '..'
 
 function noop() {
   this.Compiler = function (tree) {

@@ -1,6 +1,6 @@
 {
   "name": "@stefanprobst/remark-extract-yaml-frontmatter",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "index.js",
   "type": "module",
   "types": "index.d.ts",
@@ -17,7 +17,7 @@
     "lint": "eslint . --ignore-path .gitignore",
     "lint:fix": "yarn lint --fix",
     "prepare": "simple-git-hooks",
-    "test": "cross-env NODE_OTPIONS='' jest",
+    "test": "cross-env NODE_OPTIONS='--experimental-vm-modules' jest",
     "validate": "yarn run format && yarn run lint && yarn run test"
   },
   "engines": {

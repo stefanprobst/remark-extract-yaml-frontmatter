@@ -1,5 +1,5 @@
 import { visit } from 'unist-util-visit'
-import * as YAML from 'yaml'
+import YAML from 'yaml'
 
 export default function attacher() {
   return transformer
