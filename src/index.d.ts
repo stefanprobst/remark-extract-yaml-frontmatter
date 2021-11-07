@@ -1,5 +1,12 @@
 import type { Plugin } from 'unified'
 
-declare const extractFrontmatter: Plugin<[]>
+export interface RemarkExtractFrontmatterOptions {
+  /**
+   * Transform parsed frontmatter.
+   */
+  transform?: (frontmatter: unknown) => unknown
+}
+
+declare const extractFrontmatter: Plugin<[RemarkExtractFrontmatterOptions?]>
 
 export default extractFrontmatter

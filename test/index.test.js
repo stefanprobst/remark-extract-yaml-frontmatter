@@ -12,11 +12,14 @@ function noop() {
   }
 }
 
-const processor = unified()
-  .use(fromMarkdown, { position: false })
-  .use(withFrontmatter)
-  .use(withParsedFrontmatter)
-  .use(noop)
+function createProcessor(options = {}) {
+  const processor = unified()
+    .use(fromMarkdown)
+    .use(withFrontmatter)
+    .use(withParsedFrontmatter, options)
+    .use(noop)
+  return processor
+}
 
 const fixture = `---
 title: Test
@@ -30,12 +33,34 @@ Text
 `
 
 it('should expose parsed yaml frontmatter on vfile.data', async () => {
-  const { data } = await processor.process(fixture)
+  const { data } = await createProcessor().process(fixture)
   expect(data).toMatchInlineSnapshot(`
     Object {
       "frontmatter": Object {
         "authors": Array [
           "stefan",
+        ],
+        "title": "Test",
+      },
+    }
+  `)
+})
+
+it('should expose transformed yaml frontmatter on vfile.data', async () => {
+  const options = {
+    transform(metadata) {
+      return {
+        ...metadata,
+        authors: metadata.authors.map((author) => `🚀 ${author}`),
+      }
+    },
+  }
+  const { data } = await createProcessor(options).process(fixture)
+  expect(data).toMatchInlineSnapshot(`
+    Object {
+      "frontmatter": Object {
+        "authors": Array [
+          "🚀 stefan",
         ],
         "title": "Test",
       },

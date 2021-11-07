@@ -36,6 +36,26 @@ console.log(frontmatter)
 // { title: 'Test' }
 ```
 
+### Options
+
+It is possible to optionally transform the parsed frontmatter by providing a
+`transform` option:
+
+```js
+const options = {
+  transform(frontmatter) {
+    return {
+      ...frontmatter,
+      authors: frontmatter.authors.map(getFullAuthorDetails),
+    }
+  },
+}
+const file = remark()
+  .use(withFrontmatter)
+  .use(withParsedFrontmatter, options)
+  .processSync(md)
+```
+
 ## When not to use
 
 If you just want to extract frontmatter (without a full unified processor
