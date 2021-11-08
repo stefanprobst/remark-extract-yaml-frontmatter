@@ -105,6 +105,14 @@ it('should expose parsed yaml frontmatter as named export', async () => {
     export default MDXContent;
     "
   `)
+  expect(file.data.frontmatter).toMatchInlineSnapshot(`
+    Object {
+      "authors": Array [
+        "stefan",
+      ],
+      "title": "Test",
+    }
+  `)
 })
 
 it('should expose parsed yaml frontmatter as custom named export', async () => {
@@ -116,4 +124,5 @@ it('should expose parsed yaml frontmatter as custom named export', async () => {
     ],
   })
   expect(String(file)).toMatch(/export const frontmatter/)
+  expect(file.data.frontmatter).toBeDefined()
 })
