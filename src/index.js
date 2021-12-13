@@ -13,7 +13,10 @@ export default function attacher(options = {}) {
       })
 
       if (typeof options.transform === 'function') {
-        vfile.data.frontmatter = options.transform(vfile.data.frontmatter)
+        vfile.data.frontmatter = options.transform(
+          vfile.data.frontmatter,
+          vfile,
+        )
       }
 
       return EXIT
