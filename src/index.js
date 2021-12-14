@@ -12,14 +12,23 @@ export default function attacher(options = {}) {
         schema: YAML.CORE_SCHEMA,
       })
 
-      if (typeof options.transform === 'function') {
-        vfile.data.frontmatter = options.transform(
-          vfile.data.frontmatter,
-          vfile,
-        )
-      }
-
       return EXIT
     }
+
+    if (
+      vfile.data.frontmatter != null &&
+      typeof options.transform === 'function'
+    ) {
+      const result = options.transform(vfile.data.frontmatter, vfile)
+      if (typeof result.then === 'function') {
+        return result.then((transformed) => {
+          vfile.data.frontmatter = transformed
+        })
+      } else {
+        vfile.data.frontmatter = result
+      }
+    }
+
+    return undefined
   }
 }

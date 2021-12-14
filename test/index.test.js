@@ -68,6 +68,28 @@ it('should expose transformed yaml frontmatter on vfile.data', async () => {
   `)
 })
 
+it('should allow async transform function', async () => {
+  const options = {
+    async transform(metadata) {
+      return {
+        ...metadata,
+        authors: metadata.authors.map((author) => `🚀 ${author}`),
+      }
+    },
+  }
+  const { data } = await createProcessor(options).process(fixture)
+  expect(data).toMatchInlineSnapshot(`
+    Object {
+      "frontmatter": Object {
+        "authors": Array [
+          "🚀 stefan",
+        ],
+        "title": "Test",
+      },
+    }
+  `)
+})
+
 it('should expose parsed yaml frontmatter as named export', async () => {
   const file = await compile(fixture, {
     remarkPlugins: [
