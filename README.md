@@ -1,8 +1,7 @@
 # remark-extract-yaml-frontmatter
 
-[remark](https://github.com/remarkjs/remark) transformer plugin to parse `yaml`
-nodes and expose parsed data on `vfile.data.frontmatter`. Works on `yaml` nodes
-created by
+[remark](https://github.com/remarkjs/remark) transformer plugin to parse `yaml` nodes and expose
+parsed data on `vfile.data.frontmatter`. Works on `yaml` nodes created by
 [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter).
 
 ## How to install
@@ -25,10 +24,7 @@ title: Test
 Text
 `
 
-const file = remark()
-  .use(withFrontmatter)
-  .use(withParsedFrontmatter)
-  .processSync(md)
+const file = remark().use(withFrontmatter).use(withParsedFrontmatter).processSync(md)
 
 const frontmatter = file.data.frontmatter
 
@@ -38,8 +34,7 @@ console.log(frontmatter)
 
 ### Options
 
-It is possible to optionally transform the parsed frontmatter by providing a
-`transform` option:
+It is possible to optionally transform the parsed frontmatter by providing a `transform` option:
 
 ```js
 const options = {
@@ -50,21 +45,18 @@ const options = {
     }
   },
 }
-const file = remark()
-  .use(withFrontmatter)
-  .use(withParsedFrontmatter, options)
-  .processSync(md)
+const file = remark().use(withFrontmatter).use(withParsedFrontmatter, options).processSync(md)
 ```
 
 ## When not to use
 
-If you just want to extract frontmatter (without a full unified processor
-pipeline), you can use [`vfile-matter`](https://github.com/vfile/vfile-matter).
+If you just want to extract frontmatter (without a full unified processor pipeline), you can use
+[`vfile-matter`](https://github.com/vfile/vfile-matter).
 
 ## How to use with MDX
 
-When transforming MDX documents, you can expose the frontmatter as a named
-export, which defaults to `metadata`.
+When transforming MDX documents, you can expose the frontmatter as a named export, which defaults to
+`metadata`.
 
 ```js
 import { compile } from '@mdx-js/mdx'

@@ -3,11 +3,7 @@ import { valueToEstree } from 'estree-util-value-to-estree'
 
 export default function mdx({ name = 'metadata' } = {}) {
   if (!isIdentifierName(name)) {
-    throw new Error(
-      `The name should be a valid identifier name, got: ${JSON.stringify(
-        name,
-      )}`,
-    )
+    throw new Error(`The name should be a valid identifier name, got: ${JSON.stringify(name)}`)
   }
 
   return function transformer(tree, vfile) {

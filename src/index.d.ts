@@ -11,3 +11,11 @@ export interface RemarkExtractFrontmatterOptions {
 declare const extractFrontmatter: Plugin<[RemarkExtractFrontmatterOptions?]>
 
 export default extractFrontmatter
+
+export interface Frontmatter {}
+
+declare module 'vfile' {
+  interface DataMap {
+    frontmatter: Partial<Frontmatter>
+  }
+}

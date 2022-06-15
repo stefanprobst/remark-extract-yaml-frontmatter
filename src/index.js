@@ -1,24 +1,17 @@
-import * as YAML from 'js-yaml'
 import { visit, EXIT } from 'unist-util-visit'
+import yaml from 'yaml'
 
 export default function attacher(options = {}) {
-  return transformer
-
-  function transformer(tree, vfile) {
+  return function transformer(tree, vfile) {
     visit(tree, 'yaml', visitor)
 
     function visitor(node) {
-      vfile.data.frontmatter = YAML.load(node.value, {
-        schema: YAML.CORE_SCHEMA,
-      })
+      vfile.data.frontmatter = yaml.parse(node.value)
 
       return EXIT
     }
 
-    if (
-      vfile.data.frontmatter != null &&
-      typeof options.transform === 'function'
-    ) {
+    if (vfile.data.frontmatter != null && typeof options.transform === 'function') {
       const result = options.transform(vfile.data.frontmatter, vfile)
       if (typeof result.then === 'function') {
         return result.then((transformed) => {

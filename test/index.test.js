@@ -1,7 +1,7 @@
+import { compile } from '@mdx-js/mdx'
 import withFrontmatter from 'remark-frontmatter'
 import fromMarkdown from 'remark-parse'
 import { unified } from 'unified'
-import { compile } from 'xdm'
 
 import withParsedFrontmatter from '../src/index'
 import withParsedFrontmatterExport from '../src/mdx'
@@ -92,11 +92,7 @@ it('should allow async transform function', async () => {
 
 it('should expose parsed yaml frontmatter as named export', async () => {
   const file = await compile(fixture, {
-    remarkPlugins: [
-      withFrontmatter,
-      withParsedFrontmatter,
-      withParsedFrontmatterExport,
-    ],
+    remarkPlugins: [withFrontmatter, withParsedFrontmatter, withParsedFrontmatterExport],
   })
   expect(String(file)).toMatchInlineSnapshot(`
     "/*@jsxRuntime automatic @jsxImportSource react*/

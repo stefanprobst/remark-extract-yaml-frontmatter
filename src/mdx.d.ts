@@ -9,8 +9,6 @@ export interface RemarkExportFrontmatterMdxOptions {
   name?: string
 }
 
-declare const withExportedFrontmatter: Plugin<
-  [RemarkExportFrontmatterMdxOptions?]
->
+declare const withExportedFrontmatter: Plugin<[RemarkExportFrontmatterMdxOptions?]>
 
 export default withExportedFrontmatter
